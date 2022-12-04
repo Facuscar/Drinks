@@ -1,4 +1,5 @@
 import { Container } from 'react-bootstrap';
+import DrinksForm from '../components/Form';
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
       </header>
 
       <Container className='mt-5'>
-        1
+        <DrinksForm />
       </Container>
     </>
   )
