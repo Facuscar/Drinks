@@ -8,9 +8,10 @@ export const CategoryProvider = ({children}) => {
 
     const getCategories = async () => {
         try {
-            const url = 'www.thecocktaildb.com/api/json/v1/1/list.php?c=list'
+            const url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list'
 
-            const { data } = await axios(url)
+            const { data } = await axios(url);
+            console.log(data);
             setCategories(data.drinks);
         } catch (error) {
             console.log(error);
