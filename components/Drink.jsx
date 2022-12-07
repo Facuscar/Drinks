@@ -9,7 +9,7 @@ const Drink = ({drink}) => {
             <Card className='mb-1'>
                 <Card.Img variant='top' src={drink.strDrinkThumb} alt={drink.strDrink} />
             </Card>
-            <Card.Body className='d-flex flex-column justify-content-between' style={{height: "135px"}}>
+            <Card.Body className='d-flex flex-column justify-content-between' style={{height: "8.5rem"}}>
                 <Card.Title>{drink.strDrink}</Card.Title>
                 <Button className='w-100 text-uppercase mt-2' variant='danger' onClick={() => handleModalClick()}>
                     See recipe
