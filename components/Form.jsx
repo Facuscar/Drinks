@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { Button, Form, Row, Col, Alert } from 'react-bootstrap';
 import useCategories from '../hooks/useCategories';
+import useDrinks from '../hooks/useDrinks';
 
 const DrinksForm = () => {
 
@@ -9,23 +10,26 @@ const DrinksForm = () => {
 
     const [alert, setAlert] = useState('');
     const { categories } = useCategories();
+    const { getDrink } = useDrinks();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const search = {
             name: nameRef.current.value,
-            categories: categoryRef.current.value,
+            category: categoryRef.current.value,
         }
 
         if(Object.values(search).includes('')) {
             setAlert('All fields are required');
+
+            setTimeout(() => {
+                setAlert('');
+            }, 3000);
             return
         }
 
-        setTimeout(() => {
-            setAlert('');
-        }, 3000);
+        getDrink(search);
 
     }
 
