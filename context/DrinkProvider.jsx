@@ -9,17 +9,21 @@ export const DrinksProvider = ({children}) => {
     const [showModal, setShowModal] = useState(false);
     const [drinkId, setDrinkId] = useState();
     const [recipe, setRecipe] = useState();
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if (drinkId) {
             const getRecipe = async () => {
                 try {
                     const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`;
-        
+
+                    setLoading(true);
                     const { data } = await axios(url);
                     setRecipe(data.drinks[0]);
                 } catch (error) {
                     console.log(error);
+                } finally {
+                    setLoading(false);
                 }
             }
             getRecipe();
@@ -54,6 +58,7 @@ export const DrinksProvider = ({children}) => {
             showModal,
             handleDrinkIdClick,
             recipe,
+            loading,
         }}>
             {children}
         </DrinksContext.Provider>

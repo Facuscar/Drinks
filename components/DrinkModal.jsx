@@ -1,8 +1,9 @@
 import { Modal, Image } from "react-bootstrap";
 import useDrinks from "../hooks/useDrinks";
+import { Spinner } from "react-bootstrap";
 
 const DrinkModal = () => {
-    const { showModal, handleModalClick, recipe } = useDrinks();
+    const { showModal, handleModalClick, recipe, loading } = useDrinks();
     const showIngredients = () => {
         let ingredients = [];
         for (let i = 1; i < 16; i++) {
@@ -11,9 +12,10 @@ const DrinkModal = () => {
         }
         return ingredients;
     }
+    
     return (
         <>
-            { recipe && (
+            { (recipe && !loading) && (
                 <Modal show={showModal} onHide={handleModalClick}>
                     <Image src={recipe.strDrinkThumb} alt={`Drink ${recipe.strDrink}`} />
                     <Modal.Header>
